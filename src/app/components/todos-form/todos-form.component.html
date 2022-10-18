@@ -1,0 +1,19 @@
+<form #todosForm="ngForm" (ngSubmit)="getValues(todosForm.value)">
+    <div class="form-control">
+        <label for="name">Name</label>
+        <input ngModel type="text" name="name">
+    </div>
+    <div class="form-control">
+        <label for="description">Description</label>
+        <input ngModel type="text" name="description">
+    </div>
+    <div class="form-control">
+        <label for="priority">Priority</label>
+        <select ngModel name="priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </div>
+    <button type="submit">Submit</button>
+</form>
