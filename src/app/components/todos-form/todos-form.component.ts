@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+
+import { TodosServiceService } from 'src/app/services/todos-service.service';
 
 import Todo from 'src/app/interfaces/Todo';
 
@@ -9,11 +11,19 @@ import Todo from 'src/app/interfaces/Todo';
   styleUrls: ['./todos-form.component.css'],
 })
 export class TodosFormComponent implements OnInit {
-  constructor() {}
+  constructor(private todosService: TodosServiceService) {}
+
+  todo = {
+    name: '',
+    description: '',
+    priority: '',
+  };
 
   ngOnInit(): void {}
 
-  getValues(value: any): void {
-    console.log(value);
+  onSubmit(form: NgForm) {
+    this.todosService.addTodo(this.todo);
+
+    form.reset();
   }
 }

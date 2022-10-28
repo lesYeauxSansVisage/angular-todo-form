@@ -1,15 +1,15 @@
-<form #todosForm="ngForm" (ngSubmit)="getValues(todosForm.value)">
+<form #todosForm="ngForm" class="todos-form" (submit)="onSubmit(todosForm)">
     <div class="form-control">
         <label for="name">Name</label>
-        <input ngModel type="text" name="name">
+        <input [(ngModel)]="todo.name" type="text" name="name" required>
     </div>
     <div class="form-control">
         <label for="description">Description</label>
-        <input ngModel type="text" name="description">
+        <input [(ngModel)]="todo.description" type="text" name="description">
     </div>
     <div class="form-control">
         <label for="priority">Priority</label>
-        <select ngModel name="priority">
+        <select [(ngModel)]="todo.priority" name="priority" required>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
@@ -17,3 +17,10 @@
     </div>
     <button type="submit">Submit</button>
 </form>
+
+
+<div>
+    <p>{{todo.name}}</p>
+    <p>{{todo.description}}</p>
+    <p>{{todo.priority}}</p>
+</div>
