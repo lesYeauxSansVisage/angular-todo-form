@@ -8,13 +8,6 @@ import { mockTodos } from '../mock-todos';
 export class TodosServiceService {
   todos: Todo[] = mockTodos;
 
-  todo = {
-    id: undefined,
-    name: '',
-    description: '',
-    priority: '',
-  };
-
   constructor() {}
 
   getTodos(): Todo[] {
@@ -22,19 +15,14 @@ export class TodosServiceService {
   }
 
   addTodo(todo: Todo) {
-    todo.id = this.todos.length + 1;
-    todo.name = todo.name;
-    todo.description = todo.description;
-    todo.priority = todo.priority;
+    const newTodo: Todo = {
+      id: this.todos.length + 1,
+      name: todo.name,
+      description: todo.description,
+      priority: todo.priority,
+    };
 
-    this.todos.push(todo);
-
-    todo.id = 0;
-    todo.name = '';
-    todo.description = '';
-    todo.priority = '';
-
-    console.log(this.todos);
+    this.todos.push(newTodo);
   }
 
   logTodos(): void {
