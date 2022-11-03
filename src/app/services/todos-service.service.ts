@@ -29,7 +29,7 @@ export class TodosServiceService {
     console.log(this.todos);
   }
 
-  deleteTodos(id: number) {
-    return this.todos = this.todos.filter((todo) => todo.id !== id);
+  deleteTodos(id: number): Todo[] {
+    return (this.todos = this.todos.filter((todo) => todo.id !== id));
   }
 }
