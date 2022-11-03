@@ -21,4 +21,20 @@ export class TodosListComponent implements OnInit {
 
     this.todos = this.todoService.deleteTodos(id);
   }
+
+  getBadgeColor(priority: string): string {
+    interface Colors {
+      low: string;
+      medium: string;
+      high: string;
+    }
+
+    const colors: Colors = {
+      low: '#0bb84d',
+      medium: '#1041b3',
+      high: '#701411',
+    };
+
+    return colors[priority as keyof Colors];
+  }
 }
