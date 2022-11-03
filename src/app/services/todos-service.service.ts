@@ -28,4 +28,8 @@ export class TodosServiceService {
   logTodos(): void {
     console.log(this.todos);
   }
+
+  deleteTodos(id: number) {
+    return this.todos = this.todos.filter((todo) => todo.id !== id);
+  }
 }
