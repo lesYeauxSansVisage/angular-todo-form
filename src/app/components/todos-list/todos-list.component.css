@@ -1,0 +1,30 @@
+ul {
+  background-color: hsl(0, 0%, 21%);
+  color: white;
+
+  list-style-type: none;
+
+  margin-top: 20px;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 20px;
+
+  position: relative;
+}
+
+.todo-priority {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+
+  font-size: 1rem;
+  background-color: aquamarine;
+  padding: 5px;
+  border-radius: 10px;
+
+  text-transform: uppercase;
+}
