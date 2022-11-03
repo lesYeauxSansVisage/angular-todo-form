@@ -1,10 +1,9 @@
-<div>
-    <ul>
-        <li *ngFor="let todo of todos">
-            <h3>{{todo.name}}</h3>
-            <p>{{todo.description}}</p>
-            <p>{{todo.id}}</p>
-            <span>{{todo.priority}}</span>
-            <button (click)="delete(todo.id)">delete</button>
-        </li>
-    </ul>
+<ul>
+    <li *ngFor="let todo of todos">
+        <h3>{{todo.name}}</h3>
+        <p>{{todo.description}}</p>
+        <span class="todo-priority"
+            [ngStyle]="{'background-color': getBadgeColor(todo.priority)}">{{todo.priority}}</span>
+        <button (click)="delete(todo.id)">delete</button>
+    </li>
+</ul>
