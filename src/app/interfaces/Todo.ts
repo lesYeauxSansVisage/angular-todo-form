@@ -3,6 +3,7 @@ interface Todo {
   name: string;
   description: string;
   priority: string;
+  completed: boolean;
 }
 
 export default Todo;
