@@ -17,9 +17,8 @@ export class TodosListComponent implements OnInit {
   }
 
   delete(id: any) {
-    console.log(id);
-
-    this.todos = this.todoService.deleteTodos(id);
+    this.todos = this.todos.filter((todo) => todo.id !== id);
+    this.todoService.deleteTodos(id);
   }
 
   getBadgeColor(priority: string): string {
@@ -36,5 +35,15 @@ export class TodosListComponent implements OnInit {
     };
 
     return colors[priority as keyof Colors];
+  }
+
+  toggleCompleted(id: any) {
+    const todoId: number = id!!;
+
+    this.todos = this.todos.map((el) =>
+      el.id === todoId ? { ...el, completed: !el.completed } : el
+    );
+
+    this.todoService.toggleCompleted(todoId);
   }
 }
