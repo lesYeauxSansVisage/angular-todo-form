@@ -31,9 +31,10 @@ export class TodosFormComponent implements OnInit {
       name: this.name,
       description: this.description,
       priority: this.priority,
+      completed: false,
     };
 
-    this.todosService.addTodo(newTodo)
+    this.todosService.addTodo(newTodo);
 
     form.reset();
   }
