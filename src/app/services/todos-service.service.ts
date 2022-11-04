@@ -15,11 +15,14 @@ export class TodosServiceService {
   }
 
   addTodo(todo: Todo) {
+    const todosLength: number = this.todos.length;
+
     const newTodo: Todo = {
-      id: this.todos.length + 1,
+      id: todosLength > 0 ? this.todos[todosLength - 1].id! + 1 : 1,
       name: todo.name,
       description: todo.description,
       priority: todo.priority,
+      completed: false,
     };
 
     this.todos.push(newTodo);
@@ -31,5 +34,11 @@ export class TodosServiceService {
 
   deleteTodos(id: number): Todo[] {
     return (this.todos = this.todos.filter((todo) => todo.id !== id));
+  }
+
+  toggleCompleted(id: number): Todo[] {
+    return (this.todos = this.todos.map((el) =>
+      el.id === id ? { ...el, completed: !el.completed } : el
+    ));
   }
 }
