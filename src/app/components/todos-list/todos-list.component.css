@@ -20,11 +20,11 @@ li {
 
   border-bottom: 3px solid white;
 
-  transition: background 0.6s ease;
+  transition: all 0.6s ease;
 }
 
 .completed {
-  background-color: white;
+  opacity: 0.5;
   text-decoration: line-through;
 }
 
