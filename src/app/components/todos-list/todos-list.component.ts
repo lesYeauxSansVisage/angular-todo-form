@@ -38,11 +38,12 @@ export class TodosListComponent implements OnInit {
   }
 
   toggleCompleted(id: any) {
-    const todoId: number = id!!;
+    const todoId: number = id!;
 
-    this.todos = this.todos.map((el) =>
-      el.id === todoId ? { ...el, completed: !el.completed } : el
-    );
+    const currentTodoIndex = this.todos.findIndex((todo) => todo.id === todoId);
+
+    this.todos[currentTodoIndex].completed =
+      !this.todos[currentTodoIndex].completed;
 
     this.todoService.toggleCompleted(todoId);
   }
