@@ -14,14 +14,25 @@ export class TodosListComponent implements OnInit {
   constructor(private todoService: TodosServiceService) {}
 
   ngOnInit(): void {
-    console.log('Initialized');
-
     this.todos = this.todoService.getTodos();
+  }
+
+  addTodo(todo: Todo) {
+    const todosLength: number = this.todos.length;
+
+    const newTodo: Todo = {
+      id: todosLength > 0 ? this.todos[todosLength - 1].id! + 1 : 1,
+      name: todo.name,
+      description: todo.description,
+      priority: todo.priority,
+      completed: false,
+    };
+
+    this.todos.push(newTodo);
   }
 
   delete(id: any) {
     this.todos = this.todos.filter((todo) => todo.id !== id);
-    this.todoService.deleteTodos(id);
   }
 
   getBadgeColor(priority: string): string {
@@ -47,7 +58,5 @@ export class TodosListComponent implements OnInit {
 
     this.todos[currentTodoIndex].completed =
       !this.todos[currentTodoIndex].completed;
-
-    this.todoService.toggleCompleted(todoId);
   }
 }
