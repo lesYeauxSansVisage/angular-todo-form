@@ -15,7 +15,8 @@ export class TodoItemComponent implements OnInit {
     completed: false,
   };
 
-  @Output() todoId: any = new EventEmitter<number>();
+  @Output() deleteTodo = new EventEmitter<void>();
+  @Output() toggle = new EventEmitter<void>();
 
   constructor() {}
 
@@ -37,9 +38,11 @@ export class TodoItemComponent implements OnInit {
     return colors[priority as keyof Colors];
   }
 
-  toggleCompleted(id: any) {
-    this.todoId.emit(id);
+  toggleCompleted() {
+    this.toggle.emit();
   }
 
-  delete(id: any) {}
+  delete() {
+    this.deleteTodo.emit();
+  }
 }
