@@ -15,19 +15,7 @@ export class TodosServiceService {
   }
 
   addTodo(todo: Todo) {
-    const todosLength: number = this.todos.length;
-
-    const newTodo: Todo = {
-      id: todosLength > 0 ? this.todos[todosLength - 1].id! + 1 : 1,
-      name: todo.name,
-      description: todo.description,
-      priority: todo.priority,
-      completed: false,
-    };
-
-    console.log(this.todos);
-
-    this.todos.push(newTodo);
+    this.todos.push(todo);
   }
 
   deleteTodos(id: number): Todo[] {
