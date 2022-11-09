@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-import { TodosServiceService } from 'src/app/services/todos-service.service';
 
 import Todo from 'src/app/interfaces/Todo';
 
@@ -11,31 +9,33 @@ import Todo from 'src/app/interfaces/Todo';
   styleUrls: ['./todos-form.component.css'],
 })
 export class TodosFormComponent implements OnInit {
-  constructor(private todosService: TodosServiceService) {}
+  @Output() onTodoAdd = new EventEmitter<Todo>();
+
+  name = '';
+  description = '';
+  priority = '';
+
+  constructor() {}
 
   ngOnInit(): void {}
 
-  onSubmit(
-    name: HTMLInputElement,
-    description: HTMLInputElement,
-    priority: HTMLSelectElement
-  ) {
-    // this.todosService.addTodo();
-
-    if (!name.value || !priority.value) {
+  onSubmit() {
+    if (!this.name || !this.priority) {
       console.log('You must have a name and a priority');
       return;
     }
 
-    const newTodo = {
-      name: name.value,
-      description: description.value,
-      priority: priority.value,
+    const newTodo: Todo = {
+      name: this.name,
+      description: this.description,
+      priority: this.priority,
       completed: false,
     };
 
-    this.todosService.addTodo(newTodo);
+    this.onTodoAdd.emit(newTodo);
 
-    // form.reset();
+    this.name = '';
+    this.description = '';
+    this.priority = '';
   }
 }
