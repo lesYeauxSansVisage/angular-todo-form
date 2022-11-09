@@ -13,29 +13,29 @@ import Todo from 'src/app/interfaces/Todo';
 export class TodosFormComponent implements OnInit {
   constructor(private todosService: TodosServiceService) {}
 
-  name: string = '';
-  description: string = '';
-  priority: string = '';
-
   ngOnInit(): void {}
 
-  onSubmit(form: NgForm) {
+  onSubmit(
+    name: HTMLInputElement,
+    description: HTMLInputElement,
+    priority: HTMLSelectElement
+  ) {
     // this.todosService.addTodo();
 
-    if (!this.name || !this.priority) {
+    if (!name.value || !priority.value) {
       console.log('You must have a name and a priority');
       return;
     }
 
     const newTodo = {
-      name: this.name,
-      description: this.description,
-      priority: this.priority,
+      name: name.value,
+      description: description.value,
+      priority: priority.value,
       completed: false,
     };
 
     this.todosService.addTodo(newTodo);
 
-    form.reset();
+    // form.reset();
   }
 }

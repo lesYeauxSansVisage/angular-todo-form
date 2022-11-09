@@ -1,19 +1,19 @@
-<form #todosForm="ngForm" class="todos-form" (submit)="onSubmit(todosForm)">
+<form class="todos-form" (submit)="onSubmit(nameInput, descriptionInput, priorityInput)">
     <div class="form-control">
         <label for="name">Name</label>
-        <input [(ngModel)]="name" type="text" name="name" required>
+        <input #nameInput type="text" name="name" required>
     </div>
     <div class="form-control">
         <label for="description">Description</label>
-        <input [(ngModel)]="description" type="text" name="description">
+        <input #descriptionInput type="text" name="description">
     </div>
     <div class="form-control">
         <label for="priority">Priority</label>
-        <select [(ngModel)]="priority" name="priority" required>
+        <select #priorityInput name="priority" required>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
-        </select>   
+        </select>
     </div>
     <button type="submit">Submit</button>
 </form>

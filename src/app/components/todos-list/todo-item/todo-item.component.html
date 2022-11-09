@@ -1,0 +1,11 @@
+<li [class.completed]="todo.completed">
+    <div class="todo-info-container">
+        <input type="checkbox" name="completed" id="completed" (change)="toggleCompleted(todo.id)">
+        <div class="todo-description">
+            <h3>{{todo.name}}</h3>
+            <p>{{todo.description}}</p>
+        </div>
+    </div>
+    <span class="todo-priority" [ngStyle]="{'background-color': getBadgeColor(todo.priority)}">{{todo.priority}}</span>
+    <button (click)="delete(todo.id)">X</button>
+</li>

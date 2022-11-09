@@ -25,11 +25,9 @@ export class TodosServiceService {
       completed: false,
     };
 
-    this.todos.push(newTodo);
-  }
-
-  logTodos(): void {
     console.log(this.todos);
+
+    this.todos.push(newTodo);
   }
 
   deleteTodos(id: number): Todo[] {
