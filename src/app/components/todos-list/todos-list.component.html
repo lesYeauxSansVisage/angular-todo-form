@@ -1,5 +1,7 @@
 <app-todos-form (onTodoAdd)="addTodo($event)"></app-todos-form>
+<app-todos-filter (filterCompleted)="filterCompleted()" (showAll)="showAll()">
+</app-todos-filter>
 <ul>
-    <app-todo-item *ngFor="let todo of todos" [todo]="todo" (toggle)="toggleCompleted(todo.id)"
-        (deleteTodo)="delete(todo.id)"></app-todo-item>
+  <app-todo-item *ngFor="let todo of todos" [todo]="todo" (toggle)="toggleCompleted(todo.id)"
+    (deleteTodo)="delete(todo.id)"></app-todo-item>
 </ul>
