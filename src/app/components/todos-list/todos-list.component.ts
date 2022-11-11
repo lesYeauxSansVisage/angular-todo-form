@@ -58,5 +58,15 @@ export class TodosListComponent implements OnInit {
 
     this.todos[currentTodoIndex].completed =
       !this.todos[currentTodoIndex].completed;
+
+    
+  }
+
+  filterCompleted() {
+    this.todos = this.todos.filter((todo) => todo.completed);
+  }
+
+  showAll() {
+    this.todos = this.todoService.getTodos();
   }
 }
