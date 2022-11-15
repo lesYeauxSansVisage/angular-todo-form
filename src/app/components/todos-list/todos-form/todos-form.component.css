@@ -4,6 +4,8 @@
   gap: 1rem;
 
   color: white;
+
+  margin-bottom: 1rem;
 }
 
 .form-control {
@@ -23,6 +25,7 @@ select {
 
   padding: 10px;
   border: none;
+  border-radius: 10px;
 }
 
 .form-control input:focus,
@@ -42,6 +45,12 @@ select:focus {
   font-family: inherit;
 
   transition: all 0.4s ease;
+}
+
+.todos-form select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .todos-form button:hover {
