@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import Todo from 'src/app/interfaces/Todo';
+import { TodosService } from 'src/app/services/todos.service';
 
 @Component({
   selector: 'app-todos-form',
@@ -9,13 +10,11 @@ import Todo from 'src/app/interfaces/Todo';
   styleUrls: ['./todos-form.component.css'],
 })
 export class TodosFormComponent implements OnInit {
-  @Output() onTodoAdd = new EventEmitter<Todo>();
-
   name = '';
   description = '';
   priority = '';
 
-  constructor() {}
+  constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {}
 
@@ -32,7 +31,7 @@ export class TodosFormComponent implements OnInit {
       completed: false,
     };
 
-    this.onTodoAdd.emit(newTodo);
+    this.todosService.addTodo(newTodo);
 
     this.name = '';
     this.description = '';
