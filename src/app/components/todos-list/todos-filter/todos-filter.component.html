@@ -1,7 +1,9 @@
 <div class="filter-buttons-container">
-  <button (click)="showAllTodos()">All</button>
-  <button (click)="filterByCompleted()">Completed</button>
-  <form>
-    <input type="text">
-  </form>
+  <span>{{todosLength}} items left</span>
+  <div class="buttons-container">
+    <button (click)="showAllTodos()">All</button>
+    <button (click)="filterByCompleted()">Completed</button>
+    <button (click)="filterByCompleted()">Active</button>
+  </div>
+  <button>Clear Completed</button>
 </div>

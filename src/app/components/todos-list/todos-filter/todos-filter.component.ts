@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { filter } from 'rxjs';
+import { TodosService } from 'src/app/services/todos.service';
 
 @Component({
   selector: 'app-todos-filter',
@@ -10,9 +10,15 @@ export class TodosFilterComponent implements OnInit {
   @Output() filterCompleted = new EventEmitter<void>();
   @Output() showAll = new EventEmitter<void>();
 
-  constructor() {}
+  search: string = '';
 
-  ngOnInit(): void {}
+  todosLength: number = 0;
+
+  constructor(private todosService: TodosService) {}
+
+  ngOnInit(): void {
+    this.todosLength = this.todosService.todos.length;
+  }
 
   filterByCompleted() {
     this.filterCompleted.emit();
