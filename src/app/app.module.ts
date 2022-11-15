@@ -7,6 +7,7 @@ import { TodosFormComponent } from './components/todos-list/todos-form/todos-for
 import { TodosListComponent } from './components/todos-list/todos-list.component';
 import { TodoItemComponent } from './components/todos-list/todo-item/todo-item.component';
 import { TodosFilterComponent } from './components/todos-list/todos-filter/todos-filter.component';
+import { TodosService } from './services/todos.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { TodosFilterComponent } from './components/todos-list/todos-filter/todos
     TodosFilterComponent,
   ],
   imports: [BrowserModule, FormsModule],
-  providers: [],
+  providers: [TodosService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
