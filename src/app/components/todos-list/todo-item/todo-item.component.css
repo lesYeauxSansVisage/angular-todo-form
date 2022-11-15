@@ -1,3 +1,7 @@
+li:nth-last-of-type(1) {
+  background-color: aqua;
+}
+
 li {
   display: flex;
   align-items: center;

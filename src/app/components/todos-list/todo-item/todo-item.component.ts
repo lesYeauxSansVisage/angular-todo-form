@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import Todo from 'src/app/interfaces/Todo';
+import { TodosService } from 'src/app/services/todos.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -15,10 +16,7 @@ export class TodoItemComponent implements OnInit {
     completed: false,
   };
 
-  @Output() deleteTodo = new EventEmitter<void>();
-  @Output() toggle = new EventEmitter<void>();
-
-  constructor() {}
+  constructor(private todosService: TodosService) {}
 
   ngOnInit(): void {}
 
@@ -38,11 +36,11 @@ export class TodoItemComponent implements OnInit {
     return colors[priority as keyof Colors];
   }
 
-  toggleCompleted() {
-    this.toggle.emit();
+  toggleCompleted(id: number) {
+    this.todosService.toggleCompleted(id);
   }
 
-  delete() {
-    this.deleteTodo.emit();
+  delete(id: number) {
+    this.todosService.deleteTodos(id);
   }
 }
