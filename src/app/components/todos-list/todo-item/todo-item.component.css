@@ -1,5 +1,7 @@
-li:nth-last-of-type(1) {
-  background-color: aqua;
+:host:last-child > li {
+  border-bottom: none;
+
+  background-color: hsl(0, 0%, 21%);
 }
 
 li {
@@ -12,7 +14,7 @@ li {
 
   position: relative;
 
-  border-bottom: 3px solid white;
+  border-bottom: 4px solid hsl(0, 0%, 40%);
 
   transition: all 0.6s ease;
 }
