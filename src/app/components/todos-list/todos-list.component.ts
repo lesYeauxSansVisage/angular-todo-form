@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Todo from 'src/app/interfaces/Todo';
 
-import { TodosServiceService } from 'src/app/services/todos-service.service';
+import { TodosService } from 'src/app/services/todos.service';
 
 @Component({
   selector: 'app-todos-list',
@@ -11,28 +11,10 @@ import { TodosServiceService } from 'src/app/services/todos-service.service';
 export class TodosListComponent implements OnInit {
   todos: Todo[] = [];
 
-  constructor(private todoService: TodosServiceService) {}
+  constructor(private todoService: TodosService) {}
 
   ngOnInit(): void {
-    this.todos = this.todoService.getTodos();
-  }
-
-  addTodo(todo: Todo) {
-    const todosLength: number = this.todos.length;
-
-    const newTodo: Todo = {
-      id: todosLength > 0 ? this.todos[todosLength - 1].id! + 1 : 1,
-      name: todo.name,
-      description: todo.description,
-      priority: todo.priority,
-      completed: false,
-    };
-
-    this.todos.push(newTodo);
-  }
-
-  delete(id: any) {
-    this.todos = this.todos.filter((todo) => todo.id !== id);
+    this.todos = this.todoService.todos;
   }
 
   getBadgeColor(priority: string): string {
@@ -51,22 +33,20 @@ export class TodosListComponent implements OnInit {
     return colors[priority as keyof Colors];
   }
 
-  toggleCompleted(id: any) {
-    const todoId: number = id!;
-
-    const currentTodoIndex = this.todos.findIndex((todo) => todo.id === todoId);
-
-    this.todos[currentTodoIndex].completed =
-      !this.todos[currentTodoIndex].completed;
-
-    
-  }
-
   filterCompleted() {
     this.todos = this.todos.filter((todo) => todo.completed);
   }
 
+  filterActive() {
+    this.todos = this.todos.filter((todo) => !todo.completed);
+  }
+
   showAll() {
-    this.todos = this.todoService.getTodos();
+    this.todos = this.todoService.todos;
+  }
+
+  clearCompleted() {
+    this.todoService.clearCompleted();
+    this.todos = this.todoService.todos;
   }
 }
