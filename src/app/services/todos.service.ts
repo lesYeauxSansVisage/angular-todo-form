@@ -34,4 +34,8 @@ export class TodosService {
     this.todos[currentTodoIndex].completed =
       !this.todos[currentTodoIndex].completed;
   }
+
+  clearCompleted() {
+    this.todos = this.todos.filter((todo) => !todo.completed);
+  }
 }
