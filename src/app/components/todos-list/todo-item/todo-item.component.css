@@ -29,7 +29,7 @@ li {
   right: 5px;
   top: 5px;
 
-  font-size: 1rem;
+  font-size: 10px;
   background-color: aquamarine;
   padding: 5px;
   border-radius: 10px;
@@ -51,7 +51,6 @@ li {
 }
 
 button {
-  padding: 10px;
   background-color: hsl(0, 0%, 21%);
   border: none;
   outline: none;
