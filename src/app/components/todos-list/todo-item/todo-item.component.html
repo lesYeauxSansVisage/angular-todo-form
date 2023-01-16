@@ -7,5 +7,5 @@
     </div>
   </div>
   <span class="todo-priority" [ngStyle]="{'background-color': getBadgeColor(todo.priority)}">{{todo.priority}}</span>
-  <button (click)="delete(todo.id!)">X</button>
+  <button (click)="delete(todo.id!)"><i class="fa-solid fa-trash"></i></button>
 </li>
